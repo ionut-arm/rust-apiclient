@@ -594,10 +594,10 @@ fn safe_get_verification_api(base_url: &str) -> Result<VeraisonVerificationApi, 
     }
 
     let service_state = match verification_api.service_state() {
-        ServiceState::Down => VeraisonServiceState::VeraisonServiceStateDown,
-        ServiceState::Initializing => VeraisonServiceState::VeraisonServiceStateInitializing,
-        ServiceState::Ready => VeraisonServiceState::VeraisonServiceStateReady,
-        ServiceState::Terminating => VeraisonServiceState::VeraisonServiceStateTerminating,
+        ServiceState::ServiceStatusDown => VeraisonServiceState::VeraisonServiceStateDown,
+        ServiceState::ServiceStatusInitializing => VeraisonServiceState::VeraisonServiceStateInitializing,
+        ServiceState::ServiceStatusReady => VeraisonServiceState::VeraisonServiceStateReady,
+        ServiceState::ServiceStatusTerminating => VeraisonServiceState::VeraisonServiceStateTerminating,
     };
 
     let api = VeraisonVerificationApi {

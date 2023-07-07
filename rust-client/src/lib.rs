@@ -307,12 +307,12 @@ pub struct EvidenceBlob {
 
 /// Enumerates the four possible states that the service can be in.
 #[derive(Debug, PartialEq, serde::Deserialize)]
-#[serde(rename_all = "UPPERCASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum ServiceState {
-    Down,
-    Initializing,
-    Ready,
-    Terminating,
+    ServiceStatusDown,
+    ServiceStatusInitializing,
+    ServiceStatusReady,
+    ServiceStatusTerminating,
 }
 
 /// This object models the state and capabilities of the verification API in the Veraison service.
@@ -622,7 +622,7 @@ mod tests {
             .expect("Failed to get verification endpoint details.");
 
         // Check that we've pulled and deserialized everything that we expect
-        assert_eq!(verification_api.service_state, ServiceState::Ready);
+        assert_eq!(verification_api.service_state, ServiceState::ServiceStatusReady);
         assert_eq!(verification_api.version, String::from("commit-cb11fa0"));
         assert_eq!(verification_api.media_types.len(), 5);
         assert_eq!(
